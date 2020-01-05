@@ -30,9 +30,6 @@ class MainActivity : AppCompatActivity() {
         progerssProgressDialog.setTitle("Loading")
         progerssProgressDialog.setCancelable(false)
         progerssProgressDialog.show()
-
-
-
         if (TikiUtils.isOnline(this)) {
             getData()
         } else {
@@ -45,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         val jsonArray = JSONArray(json)
         data!!.addAll(TikiUtils.mappingDataLocal(jsonArray))
         rcvHotKey.adapter!!.notifyDataSetChanged()
+        progerssProgressDialog.dismiss()
     }
 
     private fun getData() {
